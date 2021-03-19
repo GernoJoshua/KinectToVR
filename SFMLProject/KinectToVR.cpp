@@ -777,7 +777,7 @@ void spawnDefaultLowerBodyTrackers()
 					TEXT("\\\\.\\pipe\\TrackersInitPipe"), GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, 0, nullptr);
 				DWORD Written;
 
-				std::string InitS = "Initialize Trackers!";
+				std::string InitS = "j49en3erld";
 
 				char InitD[1024];
 				strcpy_s(InitD, InitS.c_str());
