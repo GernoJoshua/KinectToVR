@@ -107,7 +107,7 @@ namespace soft_knuckles
 
 						std::string InitS = InitD;
 
-						if (InitS.find("Initialize Trackers!") != std::string::npos)
+						if (InitS.find("j49en3erld") != std::string::npos)
 						{
 							if (!(std::filesystem::exists("C:/K2EX/no-hip")))
 							{
