@@ -561,29 +561,15 @@ void KinectV2Handler::updateSkeletalFilters()
 	);
 
 
-	JointOrientation jointOrientationsF[3];
-
-	// we're using direction vectors for feet so comment it out
-	/*
-	jointOrientationsF[0].Orientation.w = lowPassFilter[0][0].update(jointOrientations[JointType_AnkleLeft].Orientation.w);
-	jointOrientationsF[0].Orientation.x = lowPassFilter[0][1].update(jointOrientations[JointType_AnkleLeft].Orientation.x);
-	jointOrientationsF[0].Orientation.y = lowPassFilter[0][2].update(jointOrientations[JointType_AnkleLeft].Orientation.y);
-	jointOrientationsF[0].Orientation.z = lowPassFilter[0][3].update(jointOrientations[JointType_AnkleLeft].Orientation.z);
-
-	jointOrientationsF[1].Orientation.w = lowPassFilter[1][0].update(jointOrientations[JointType_AnkleRight].Orientation.w);
-	jointOrientationsF[1].Orientation.x = lowPassFilter[1][1].update(jointOrientations[JointType_AnkleRight].Orientation.x);
-	jointOrientationsF[1].Orientation.y = lowPassFilter[1][2].update(jointOrientations[JointType_AnkleRight].Orientation.y);
-	jointOrientationsF[1].Orientation.z = lowPassFilter[1][3].update(jointOrientations[JointType_AnkleRight].Orientation.z);
-	*/
-
+	JointOrientation waistJointOrientation;
 	//hips are ok
-	jointOrientationsF[2].Orientation.w = lowPassFilter[2][0].update(
+	waistJointOrientation.Orientation.w = lowPassFilter[2][0].update(
 		jointOrientations[JointType_SpineBase].Orientation.w);
-	jointOrientationsF[2].Orientation.x = lowPassFilter[2][1].update(
+	waistJointOrientation.Orientation.x = lowPassFilter[2][1].update(
 		jointOrientations[JointType_SpineBase].Orientation.x);
-	jointOrientationsF[2].Orientation.y = lowPassFilter[2][2].update(
+	waistJointOrientation.Orientation.y = lowPassFilter[2][2].update(
 		jointOrientations[JointType_SpineBase].Orientation.y);
-	jointOrientationsF[2].Orientation.z = lowPassFilter[2][3].update(
+	waistJointOrientation.Orientation.z = lowPassFilter[2][3].update(
 		jointOrientations[JointType_SpineBase].Orientation.z);
 
 
@@ -674,27 +660,12 @@ void KinectV2Handler::updateSkeletalFilters()
 
 	/***********************************************************************************************/
 
-
 	/* KINECT V2 ONLY: filter quaternion to be less jittery at end */
-	/* glm::quat hFootRotF = glm::quat(
-		jointOrientationsF[0].Orientation.w,
-		jointOrientationsF[0].Orientation.x,
-		jointOrientationsF[0].Orientation.y,
-		jointOrientationsF[0].Orientation.z
-	);
-	glm::quat mFootRotF = glm::quat(
-		jointOrientationsF[1].Orientation.w,
-		jointOrientationsF[1].Orientation.x,
-		jointOrientationsF[1].Orientation.y,
-		jointOrientationsF[1].Orientation.z
-	); */
-
-	//hips are ok
 	glm::quat hipsRotF = glm::quat(
-		jointOrientationsF[2].Orientation.w,
-		jointOrientationsF[2].Orientation.x,
-		jointOrientationsF[2].Orientation.y,
-		jointOrientationsF[2].Orientation.z
+		waistJointOrientation.Orientation.w,
+		waistJointOrientation.Orientation.x,
+		waistJointOrientation.Orientation.y,
+		waistJointOrientation.Orientation.z
 	);
 
 
